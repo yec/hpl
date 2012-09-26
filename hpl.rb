@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
 
-def roomtype name
-    cl = Object.const_set  name, Class.new { def method1() 42 end }
-    return cl
+class RoomType
+    def initialize params = {}
+        @area = params[:area]
+    end
+end
+
+def roomtype params = {}
+    return RoomType.new params
 end
 
 def percent value
@@ -20,6 +25,7 @@ def department name, params = {}
 end
 
 def room range, params = {}
+    #puts params[:type].new.instance_eval
     range.each {|x| puts "#{x} #{params}"}
 end
 
